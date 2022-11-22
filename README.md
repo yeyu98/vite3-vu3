@@ -14,7 +14,6 @@
         * axios存放至api中；
 
 ## 代码规范
-
     * EditorConfig
         * 在项目根目录新建.editorconfig文件添加以下内容；
             # 表示是最顶层的 EditorConfig 配置文件
@@ -95,6 +94,10 @@
             * 在.eslintrc文件中的extends中添加 ['plugin:prettier/recommended'] 配置；
 
     * git hooks工具 Husky + lint-staged
+        * 如果只是添加了ESLint那么我们可以手动关闭ESLint的检测那么这个时候ESLint的作用也就不存在了
+          这个时候我们需要在git提交代码的时候触发ESLint检测时强制不让提交；
+        * 初始化husky npx husky-init；
+        * 修改pre-commit文件 在提交commit之前执行走eslint配置校验src下的 .vue,.js,.ts 文件；
 
 ## 提交规范
 
