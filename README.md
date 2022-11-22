@@ -6,12 +6,15 @@
     * 路由 Vue Router
         * npm i vue-router；
         * 路由存放至router中；
+        * 设计封装路由；
     * 全局状态管理 Pinia
         * npm i Pinia；
         * 全局状态管理存放至store中；
+        * 设计封装 Pinia；
     * http请求 Axios
         * npm i axios；
         * axios存放至api中；
+        * 设计封装axios；
 
 ## 代码规范
     * EditorConfig
@@ -94,11 +97,31 @@
             * 在.eslintrc文件中的extends中添加 ['plugin:prettier/recommended'] 配置；
 
     * git hooks工具 Husky + lint-staged
-        * 如果只是添加了ESLint那么我们可以手动关闭ESLint的检测那么这个时候ESLint的作用也就不存在了
-          这个时候我们需要在git提交代码的时候触发ESLint检测时强制不让提交；
-        * 初始化husky npx husky-init；
-        * 修改pre-commit文件 在提交commit之前执行走eslint配置校验src下的 .vue,.js,.ts 文件；
+        * Husky：提供git的hook在提交前提交时做一些什么事情
+            * 如果只是添加了ESLint那么我们可以手动关闭ESLint的检测那么这个时候ESLint的作用也就不存在了
+            这个时候我们需要在git提交代码的时候触发ESLint检测时强制不让提交；
+            * 初始化husky npx husky-init；
+            * 修改pre-commit文件 输入npm run lint，之后配置npm scripts
+            "lint": "eslint --fix ./src --ext .vue,.js,.ts"
+            在提交commit之前执行走eslint配置校验src下所有的 .vue,.js,.ts 文件（没必要我们可以使用linte-stage控制在只检测修改了的文件而不是所有）；
+                * 刚刚直接将eslint --fix ./src --ext .vue,.js,.ts 放到了pre-commit里面发现没有生效换了个方式；
+        * lint-staged：限制在修改之后的文件
+            * npm i lint-staged -D；
+            * 在package.json中添加 
+                "lint-staged": {
+                    "*.{vue,js,ts}": "eslint --fix"
+                },
+
+            * 修改pre-commit文件内容为 npx lint-staged
+
+
+总结一下代码格式的几种方式
+在文件保存时使用ESLint插件自动修复部分不规范代码；
+使用Husky + lint-staged 设置在pre-commit（commit之前检测ESLint || 自动执行preitter） ；
 
 ## 提交规范
 
     * CommitLint
+
+### 单元测试
+### 自动部署
