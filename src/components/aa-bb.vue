@@ -6,6 +6,8 @@ defineProps({
 });
 
 const count = ref(0);
+const singlequte = 1;
+console.log(singlequte);
 </script>
 
 <template>
