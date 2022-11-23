@@ -3,7 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from "./components/HelloWorld.vue";
 
-const a = "1212";
+const a = "12";
 console.log(a);
 </script>
 
