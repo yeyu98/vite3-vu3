@@ -120,8 +120,21 @@
 使用Husky + lint-staged 设置在pre-commit（commit之前检测ESLint || 自动执行preitter） ；
 
 ## 提交规范
-
     * CommitLint
+    * commit规范
+    *   feat新增一个功能
+        fix修复一个 Bug
+        docs文档变更
+        style代码格式（不影响功能，例如空格、分号等格式修正）
+        refactor代码重构
+        perf改善性能
+        test测试
+        build变更项目构建或外部依赖（例如 scopes: webpack、gulp、npm 等）
+        ci更改持续集成软件的配置文件和 package 中的 scripts 命令，例如 scopes: Travis, Circle 等
+        chore变更构建流程或辅助工具revert代码回退
+    * npm i @commitlint/config-conventional @commitlint/cli -D
+    * 在项目根目录下执行 echo "module.exports={extends: ['@commitlint/config-conventional']};" > commitlint.config.js 生成commitlint配置文件；
+    * 在husky中添加新的hook并在文件中输入npx --no -- commitlint --edit ${1}
 
 ### 单元测试
 ### 自动部署
